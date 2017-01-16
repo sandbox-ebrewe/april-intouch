@@ -1,0 +1,87 @@
++hideOnProd(locals.site.env)
+  .medium-3.large-3.columns.hide-for-small-only.hide-on-print(style='padding-right:1rem;')
+    // googleoff: all
+    h1#leftnav-heading.visually-hidden Section Menu
+    nav#left-nav.leftnav.show-for-large-up.hide-for-print(role='navigation')
+      // accessible sidebar sublayout
+      ul
+        li.visually-hidden Residential
+        li
+          h1
+            a(href='/residential/manage-your-account') Manage Your Account
+          ul
+            li
+              h2
+                a(href='https://myaccount.uniongas.com/login.aspx', target='_blank') Log in to MyAccount
+            li
+              h2
+                a(href='/residential/manage-your-account/what-is-myaccount') What is MyAccount
+            li
+              h2
+                a(href='/residential/manage-your-account/pay-your-bill') Pay Your Bill
+            li
+              h2
+                a(href='/residential/manage-your-account/billing') Billing
+              ul
+                li
+                  h3
+                    a(href='/residential/manage-your-account/billing/view-your-bills') View Your Bills
+                li
+                  h3
+                    a(href='/residential/manage-your-account/billing/view-current-balance') View Your Current Balance
+                li
+                  h3
+                    a(href='/residential/manage-your-account/billing/compare-bills') Compare Your Bills
+                li
+                  h3
+                    a(href='/residential/manage-your-account/billing/equal-billing-plan') Equal Billing Plan
+                li
+                  h3
+                    a(href='/residential/manage-your-account/billing/submit-meter-reading') Submit a Meter Reading
+                li
+                  h3
+                    a(href='/residential/manage-your-account/billing/understanding-your-bill') Understanding Your Bill
+                li
+                  h3
+                    a(href='/residential/manage-your-account/billing/ways-to-manage-bill') Ways to manage your Bill
+                li
+                  h3
+                    a(href='/residential/manage-your-account/billing/security-deposit') Security Deposit
+                li
+                  h3
+                    a.selected(href='/residential/manage-your-account/billing/bill-inserts', aria-label='this is the current document') Bill Inserts
+                  ul
+                    li
+                      h4
+                        a(href='/residential/manage-your-account/billing/bill-inserts/2017') 2017
+                    li
+                      h4
+                        a(href='/residential/manage-your-account/billing/bill-inserts/2016') 2016
+                    li
+                      h4
+                        a(href='/residential/manage-your-account/billing/bill-inserts/2015') 2015
+                li
+                  h3
+                    a(href='/residential/manage-your-account/billing/bill-payments-faq') FAQs
+            li
+              h2
+                a(href='/residential/manage-your-account/update-account-information') Update Your Account Information
+            li
+              h2
+                a(href='/residential/manage-your-account/paperless-billing') Paperless Billing
+        li
+          h1
+            a(href='/residential/start-stop-move-service') Start, Stop or Move
+        li
+          h1
+            a(href='/residential/save-money-energy') Save Money & Energy
+        li
+          h1
+            a(href='/residential/products-services') Products & Services
+        li
+          h1
+            a(href='/residential/rates') Rates
+        li
+          h1
+            a(href='/residential/customer-service') Customer Service
+    // googleon: all

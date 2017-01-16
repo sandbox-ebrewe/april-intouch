@@ -3,12 +3,19 @@ import gulpLoadPlugins from 'gulp-load-plugins';
 import browserSync from 'browser-sync';
 
 const reload = browserSync.reload;
+var cleanCSS = require('gulp-clean-css');
 const $ = gulpLoadPlugins();
 
 // ENVIRONMENTS
 //---------------------------------------|
 const development = $.environments.development;
 const production = $.environments.production;
+
+gulp.task('copy:img', ()=>{
+  gulp.src('src/img/**/*.*')
+  .pipe(gulp.dest('.tmp/images'))
+  .pipe(gulp.dest('dist/images'))
+});
 
 // AUTOPREFIXER OPTIONS
 // --------------------------------------|
@@ -41,13 +48,15 @@ gulp.task('styles', ()=>{
   .pipe($.postcss(optsPostCSS))
   .pipe($.concat('main.min.css'))
   .pipe(development(gulp.dest('.tmp/styles')))
+  .pipe(production(cleanCSS({})))
   .pipe(production(gulp.dest('dist/styles')))
   .pipe(reload({stream:true}))
 });
 
 // "JADE" OPTIONS
 // --------------------------------------|
-let devLocals = require('./src/views/_locals.json');
+let devLocals = require('./src/views/_localsDev.json');
+let prodLocals = require('./src/views/_localsProd.json');
 let optsPugDev = {
     pretty: true,
     basedir: 'src/views',
@@ -57,7 +66,7 @@ let optsPugDev = {
 let optsPugProd = {
     pretty: true,
     basedir: 'src/views',
-    locals: devLocals,
+    locals: prodLocals,
     env: 'prod'
 };
 
@@ -74,15 +83,21 @@ let optsPretty = {
 // VIEWS
 // --------------------------------------|
 gulp.task('views', () => {
+    gulp.src('src/views/**/*.pug')
+      .pipe($.changed('.tmp', {extension: '.html'}))
+      //.pipe($.pugInheritance({basedir: 'src/views'}))
+      .pipe($.filter(["**/*", "!src/views/**/_*.pug"]))
+      .pipe($.pug(optsPugProd))
+      .pipe($.prettify(optsPretty))
+      .pipe(gulp.dest('dist'))
+      .pipe(reload({stream: true}))
     return gulp.src('src/views/**/*.pug')
         .pipe($.changed('.tmp', {extension: '.html'}))
         //.pipe($.pugInheritance({basedir: 'src/views'}))
         .pipe($.filter(["**/*", "!src/views/**/_*.pug"]))
-        .pipe(development($.pug(optsPugDev)))
-        .pipe(production($.pug(optsPugProd)))
+        .pipe($.pug(optsPugDev))
         .pipe($.prettify(optsPretty))
-        .pipe(development(gulp.dest('.tmp')))
-        .pipe(production(gulp.dest('.dist')))
+        .pipe(gulp.dest('.tmp'))
         .pipe(reload({stream: true}))
 });
 gulp.task('views:watch', () => {
@@ -91,7 +106,7 @@ gulp.task('views:watch', () => {
 
 // DEVELOPMENT SERVE
  // --------------------------------------|
- gulp.task('serve', ['styles', 'views:watch', 'views'], () => {
+ gulp.task('serve', ['copy:img', 'styles', 'views:watch', 'views'], () => {
      browserSync({
          notify: false,
          port: 9000,
@@ -103,7 +118,7 @@ gulp.task('views:watch', () => {
      // Watch files
      gulp.watch([
          'src/images/**/*'
-     ]).on('change', reload);
+     ], ['copy:img']).on('change', reload);
 
      // Watch scss
      gulp.watch([
@@ -114,6 +129,7 @@ gulp.task('views:watch', () => {
      // Watch pug + locals
      gulp.watch([
          'src/views/**/*.pug',
+         'src/views/**/_*.pug',
          'src/views/_locals.json'
      ], ['views']);
  });

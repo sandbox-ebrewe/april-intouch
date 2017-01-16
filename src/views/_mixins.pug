@@ -5,8 +5,41 @@ mixin image(env, options)
     - var options = {}
   -
     var attrs = {}
-    attrs.src = (env == 'dev') ? options.dev || "images/image.jpg" : options.prod || "images/image.jpg"
+    var imagepath = 'images/'
+    if (!options.prod)
+      options.prod = "image.jpg"
+    attrs.src = env == 'dev' ? imagepath + options.dev  : options.prod
     attrs.alt = options.alt || "uniongas.com"
   if attributes.class
     - attrs.class = attributes.class
+  if attributes.style
+    - attrs.style = attributes.style
   img&attributes(attrs)
+
+
+mixin externalLink(url)
+  if !url
+    - var url = "#"
+  a(href=url target="_blank")
+    if block
+      block
+
+mixin contentWrapper(env)
+  if (env == 'dev')
+      #main-content.medium-9.columns.end
+        div(style='max-width: 778px; margin: 0 auto;')
+          block
+  else
+    block
+
+mixin hideOnProd(env)
+  if env == 'dev'
+    block
+
+
+mixin pageWrapper(env)
+  if env == "dev"
+    #content_section.row.content.collapse(role="main")
+      block
+  else
+    block

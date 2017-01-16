@@ -1,5 +1,45 @@
 .intouch {
+  //base
+
+  //Components
+  .callout{
+    padding:20px 30px;
+    background:#fffde5;
+    border-radius:8px;
+    border:1px solid #beb29e;
+    margin:30px auto 20px;
+  }
+
+
+  //Elements
   .hero{
-    display:block; width:100%; max-width:600px; margin:0 auto; 
+    display:block;
+    width:100%;
+    max-width:600px;
+    margin:0 auto;
+  }
+  .pageTitle{
+    margin:30px 0;
+  }
+  .small-full{
+    @media(max-width:600px){
+      display:inherit;
+      width:320px;
+      float:none!important;
+      margin:30px auto;
+    }
+  }
+
+  //Helpers
+  .left{
+    float:left;
+  }
+  .margin{
+    $directions: left right top bottom;
+    @each $dir in $directions {
+      &--#{$dir}{
+        margin-#{$dir}: 30px;
+      }
+    }
   }
 }

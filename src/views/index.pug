@@ -1,37 +1,82 @@
-doctype html
-head
-  meta(charset='utf-8')
-  meta(http-equiv='x-ua-compatible', content='ie=edge')
-  meta(name='viewport', content='width=device-width initial-scale=1')
-  title Feb 2017 Intouch
-  link(href='styles/unionGas.css', rel='stylesheet')
-  link(href='styles/main.min.css', rel='stylesheet')
+extends layout/_billinsert.pug
 
-include _mixins.pug
-
-// IMAGES
--
-  var imgPath = 'images/'
-  var images = {
-    header: {
-        dev: 'hdr.jpg',
-        alt: 'A girl catching snowflakes, snow on evergreens'
+block vars
+  -
+    var pageTitle = "February 2017 Intouch"
+    var imgPath = 'images/'
+    var images = {
+      header: {
+          dev: 'hdr.jpg',
+          prod: '-/media/DAEB8B56DE534B2596361913ED1A2FC3.ashx?la=en',
+          alt: 'A girl catching snowflakes, snow on evergreens'
+        },
+      story1:{
+        dev: 'review.jpg',
+        prod: '-/media/3B975DC96F8C4F0984D7AB6354A5447A.ashx?la=en',
+        alt: 'People reviewing their natural gas bill.'
       },
-    story1:{
-      dev: 'review.jpg',
-      alt: 'People reviewing their natural gas bill.'
-    },
-    story2:{
-      dev: 'laptop.jpg',
-      alt: 'Laptop with image of MyAccount details.'
+      story2:{
+        dev: 'laptop.jpg',
+        prod: '-/media/DE27A00CCA7340C4AE7760F02E0CBF22.ashx?la=en',
+        alt: 'Laptop with image of MyAccount details.'
+      }
     }
-  }
 
-div(style='max-width: 778px; margin: 0 auto;')
-  .bill-insert
-    .intouch
-      .row.text-center(style='margin:30px 0;')
-        +image(locals.env, images.header)(class="hero")
-      h1.pageTitle(style='margin:30px 0;') New cap-and-trade costs are included on this bill.
-      .row
-        | Text!
+block content
+  +contentWrapper(locals.site.env)
+    .bill-insert
+      .intouch
+        .row.text-center(style='margin:30px 0;')
+          +image(locals.site.env, images.header)(class="hero")
+        h1.pageTitle Top 3 questions about cap and trade
+        .row
+          +image(locals.site.env, images.story1)(class="margin--right margin--bottom left small-full")
+          p
+            strong 1. What is cap and trade?
+            br
+            | The provincial government’s cap-and-trade program, which started on Jan. 1, 2017, sets a target to reduce the amount of greenhouse gas (GHG) emissions in Ontario. Union Gas is required to buy emission allowances for the natural gas you use, and those costs are recovered on your bill. The government plans to use the funds raised by this program to support Ontario’s Climate Change Action Plan. Visit <a href="uniongas.com/capandtrade">uniongas.com/capandtrade</a> to learn more.
+          p
+            strong 2. How much will cap and trade increase my bill?
+            br
+            | The current cost of GHG emission allowances – about 3.3 cents per cubic metre (m<sup>3</sup>) of natural gas used – is included in the Delivery line on your bill. The price of emission allowances can change over time, but the Ontario Energy Board must approve all costs before they’re charged to you. By using the calculator found at <a href="uniongas.com/capandtrade">uniongas.com/capandtrade</a>, you can estimate what cap and trade is costing you.
+          p
+            strong 3. What can I do to reduce the cost?
+            br
+            | The amount you’ll pay for cap and trade depends on the amount of gas you use. Union Gas has effi ciency programs and simple tips to help you reduce your gas use and lower your overall energy costs along with the costs of cap and trade. Go to <a href="uniongas.com/savemoney" target="_blank">uniongas.com/savemoney</a> to check them out.
+
+        .row
+          .callout
+            h2 You Pay, So Have Your Say
+            p We’d like you to participate in a questionnaire about how we’re meeting your utility needs. Visit <A href="uniongasplans.ca">uniongasplans.ca</a> to take the questionnaire.
+
+        hr
+
+        h2.small-text-center.medium-text-left MyAccount helps at tax time
+        .row
+          +image(locals.site.env, images.story2)(class="left margin--right margin--bottom columns small-8 small-offset-2 medium-12 medium-offset-0")
+        .columns.small-12
+            p MyAccount, your Union Gas online account manager, is designed to make life easier – especially at tax time. Simply log in to MyAccount for a summary of your annual natural gas bills and payments.
+            ul.margin--bottom
+              li
+                strong Get an annual summary of your gas use and bill history, with cap-and-trade costs shown separately
+              li
+                strong Print or download up to 24 months of account history
+              li
+                strong No need to save and file (or lose) your bills when they’re at your  fingertips 24/7
+              li
+                strong Mobile and desktop versions let you access your Union Gas account any time, anywhere
+              li
+                strong MyAccount is secure, protected, organized and, best of all, FREE
+
+        .row
+          .callout
+            h3 To get your billing history:
+            ol
+              li Log in to MyAccount at <a href="uniongas.com/myaccount" target="_blank">uniongas.com/myaccount</a>
+              li Click on the Bills & Payments tab
+            h3 If you’ve never used MyAccount:
+            ol
+              li Go to <a href="uniongas.com/myaccount" target="_blank">uniongas.com/myaccount</a> and click Register Now
+              li  Complete the registration page – you’ll need your 14-digit  Union Gas account number
+        .row
+          p Choose to get your gas bill as a PDF attached to your monthly email notification for even more convenience – no login or password required. Find out more about MyAccount at <A href="uniongas.com/residential">uniongas.com/residential</a>.
