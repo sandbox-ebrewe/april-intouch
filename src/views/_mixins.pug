@@ -39,7 +39,7 @@ mixin hideOnProd(env)
 
 mixin pageWrapper(env)
   if env == "dev"
-    #content_section.row.content.collapse(role="main")
+    #content_section.row.content.collapse(role="main", style="padding:0 15px;")
       block
   else
     block
