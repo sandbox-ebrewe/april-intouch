@@ -1,0 +1,10 @@
+mixin image(env, options)
+  if !env
+    - var env = 'dev'
+  if !options
+    - var options = {}
+  -
+    var attrs = {}
+    attrs.src = (env == 'dev') ? options.dev || "images/image.jpg" : options.prod || "images/image.jpg"
+    attrs.alt = options.alt || "uniongas.com"
+  img&attributes(attrs)

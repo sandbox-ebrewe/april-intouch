@@ -1,0 +1,37 @@
+doctype html
+head
+  meta(charset='utf-8')
+  meta(http-equiv='x-ua-compatible', content='ie=edge')
+  meta(name='viewport', content='width=device-width initial-scale=1')
+  title Feb 2017 Intouch
+  link(href='styles/unionGas.css', rel='stylesheet')
+  link(href='styles/main.min.css', rel='stylesheet')
+
+include _mixins.pug
+
+// IMAGES
+-
+  var imgPath = 'images/'
+  var images = {
+    header: {
+        dev: 'hdr.jpg',
+        alt: 'A girl catching snowflakes, snow on evergreens'
+      },
+    story1:{
+      dev: 'review.jpg',
+      alt: 'People reviewing their natural gas bill.'
+    },
+    story2:{
+      dev: 'laptop.jpg',
+      alt: 'Laptop with image of MyAccount details.'
+    }
+  }
+
+div(style='max-width: 778px; margin: 0 auto;')
+  .bill-insert
+    .row.text-center(style='margin:30px 0;')
+      +image(locals.env, images.header)
+      img(src='images/hdr.jpg', style='display:block; width:100%; max-width:600px; margin:0 auto; ')
+    h1.pageTitle(style='margin:30px 0;') New cap-and-trade costs are included on this bill.
+    .row
+      | Text!

@@ -1,0 +1,9 @@
+{
+    "site": {
+        "name": "UnionGas",
+        "url": "uniongas.com",
+        "analytics": "UA-XXXXX-X",
+        "theme": "#000000",
+        "responsive": true
+    }
+}
