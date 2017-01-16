@@ -40,7 +40,8 @@ gulp.task('styles', ()=>{
   .pipe($.sass())
   .pipe($.postcss(optsPostCSS))
   .pipe($.concat('main.min.css'))
-  .pipe(gulp.dest('.tmp/styles'))
+  .pipe(development(gulp.dest('.tmp/styles')))
+  .pipe(production(gulp.dest('dist/styles')))
   .pipe(reload({stream:true}))
 });
 
@@ -80,7 +81,8 @@ gulp.task('views', () => {
         .pipe(development($.pug(optsPugDev)))
         .pipe(production($.pug(optsPugProd)))
         .pipe($.prettify(optsPretty))
-        .pipe(gulp.dest('.tmp'))
+        .pipe(development(gulp.dest('.tmp')))
+        .pipe(production(gulp.dest('.dist')))
         .pipe(reload({stream: true}))
 });
 gulp.task('views:watch', () => {
