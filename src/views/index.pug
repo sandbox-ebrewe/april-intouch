@@ -29,9 +29,9 @@ include _mixins.pug
 
 div(style='max-width: 778px; margin: 0 auto;')
   .bill-insert
-    .row.text-center(style='margin:30px 0;')
-      +image(locals.env, images.header)
-      img(src='images/hdr.jpg', style='display:block; width:100%; max-width:600px; margin:0 auto; ')
-    h1.pageTitle(style='margin:30px 0;') New cap-and-trade costs are included on this bill.
-    .row
-      | Text!
+    .intouch
+      .row.text-center(style='margin:30px 0;')
+        +image(locals.env, images.header)(class="hero")
+      h1.pageTitle(style='margin:30px 0;') New cap-and-trade costs are included on this bill.
+      .row
+        | Text!
