@@ -14,6 +14,28 @@
 .intouch .pageTitle {
   margin: 30px 0; }
 
+.intouch ol, .intouch ul {
+  padding: 0 0 0 1.3em;
+  margin: 0; }
+
+.intouch .bordered-item {
+  padding: 15px;
+  border: 1px solid #00539b;
+  font-size: 1.2em;
+  line-height: 1.8em;
+  font-weight: bold;
+  margin: 1em 0 1em -1.3em;
+  list-style-position: outside;
+  list-style-type: none; }
+  .intouch .bordered-item .has-number {
+    position: relative; }
+    .intouch .bordered-item .has-number:before {
+      display: block;
+      position: absolute;
+      content: "5.";
+      left: 0;
+      top: 0; }
+
 .intouch .left {
   float: left; }
 

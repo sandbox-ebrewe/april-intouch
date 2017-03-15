@@ -1,3 +1,5 @@
+$color-brand-primary: #00539b;
+
 .intouch {
   //base
 
@@ -27,6 +29,34 @@
       width:320px;
       float:none!important;
       margin:30px auto;
+    }
+  }
+
+  ol, ul{
+    padding:0 0 0 1.3em;
+    margin:0;
+
+  }
+  .bordered-item{
+    padding:15px;
+    border:1px solid $color-brand-primary;
+    font-size:1.2em;
+    line-height: 1.8em;
+    font-weight:bold;
+    margin:1em 0 1em -1.3em;
+    list-style-position: outside;
+    list-style-type:none;
+
+    .has-number{
+      position:relative;
+
+      &:before{
+        display:block;
+        position:absolute;
+        content:"5.";
+        left:0;
+        top:0;
+      }
     }
   }
 
